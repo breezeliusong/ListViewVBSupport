@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="App2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="ItemData_Loaded"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="ItemDataSource" Source="{x:Bind ItemData}"/>
+
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView x:Name="lstItemDataXT" Header="Item Data">
+            <!--<ListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Center">
+                     
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.HeaderTemplate>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock x:Name="HeaderName" Text="Item Name" RelativePanel.LeftOf="Price"></TextBlock>
+                        <TextBlock x:Name="ItemName" Text="{Binding name, Source={Binding ItemDataSource}}"></TextBlock>
+                        <TextBlock x:Name="HeaderPrice" Text="Price"></TextBlock>
+                        <TextBlock x:Name="ItemPrice" Text="{Binding price}"></TextBlock>
+
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <!--<GridView x:Name="grdItemDataCSV" ItemsSource="{Binding ItemDataSource}" >
+        </GridView>-->
+    </Grid>
+
+</Page>
